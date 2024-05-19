@@ -4,7 +4,7 @@ import easyocr
 import telebot
 from telebot import types
 
-bot = telebot.TeleBot("7099804361:AAFP-8fDKgkNavfW0wScygd9veBn0EkqWBE")
+bot = telebot.TeleBot("bottoken")
 
 plate = cv2.CascadeClassifier('plate.xml')
 
