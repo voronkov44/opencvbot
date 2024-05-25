@@ -1,12 +1,15 @@
 import cv2
+import os
 import numpy as np
 import easyocr
 import telebot
 from telebot import types
 
-bot = telebot.TeleBot("bottoken")
+bot = telebot.TeleBot("7099804361:AAGf1QxCrSWcehLO56mZ_XgUpvKHAs_wfXU")
 
 plate = cv2.CascadeClassifier('plate.xml')
+
+proccessing_message = None
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -16,6 +19,9 @@ def start(message):
 
 @bot.message_handler(content_types=['photo'])
 def handle_image(message):
+    global processing_message
+    processing_message = bot.send_message(message.chat.id, "Обрабатываем ваш вопрос...")
+
     photo = message.photo[-1]
     file = bot.get_file(photo.file_id)
     downloaded_file = bot.download_file(file.file_path)
@@ -30,25 +36,59 @@ def handle_image(message):
     plate_text = plate.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=9)
 
     # устанавливаем рамочку которая выделяет номер
-    for (x, y, w, h) in plate_text:
-        cv2.rectangle(gray, (x, y), (x + w, y + h), (0, 0, 0), thickness=3)
-        cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), thickness=3)
+    if len(plate_text) == 0:
+        bot.send_message(message.chat.id, "Не удалось найти номерной знак на этой фотографии.")
+        bot.delete_message(message.chat.id, processing_message.message_id)
+    else:
+        for (x, y, w, h) in plate_text:
+            cv2.rectangle(gray, (x, y), (x + w, y + h), (0, 0, 0), thickness=3)
+            cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), thickness=3)
 
-        # Вырезаем область номерного знака из изображения
-        plate_roi = gray[y:y + h, x:x + w]
+            # Вырезаем область номерного знака из изображения
+            plate_roi = gray[y:y + h, x:x + w]
 
-        # Сохраняем область номерного знака в отдельном файле
-        cv2.imwrite('redimages/plate_roi.jpeg', plate_roi)
+            # Сохраняем область номерного знака в отдельном файле
+            cv2.imwrite('redimages/plate_roi.jpeg', plate_roi)
 
+            text = easyocr.Reader(['ru'])
+            text = text.readtext(plate_roi)
 
-    text = easyocr.Reader(['en'])
-    text = text.readtext(plate_roi)
-    plate_number = text[0][1] # Получение номера из кортежа
-    print(text)
+            if text:
+                plate_number = text[0][1].upper()  # Получение номера из кортежа
+                plate_number = plate_number.replace('[', '').replace(']', '').replace('/', '').replace('₽', 'Р').replace(':', '').replace(';', '').replace('{', '').replace('}', '').replace('`', '').replace(' ', '') # Удаление символов [ и ]
+                # 1массив
+                for i in range(0, 1):
+                    if '0' in plate_number[:1]:
+                        plate_number = plate_number[:1].replace('0', 'O') + plate_number[1:4] + plate_number[4:]
+                    elif '1' in plate_number[:1]:
+                        plate_number = plate_number[:1].replace('1', 'Т') + plate_number[1:4] + plate_number[4:]
+                #2 массив
+                for i in range(1, 4):
+                    if 'О' in plate_number[1:4]:
+                        plate_number = plate_number[:1] + plate_number[1:4].replace('О', '0') + plate_number[4:6] + plate_number[6:]
+                    elif 'Б' in plate_number[1:4]:
+                        plate_number = plate_number[:1] + plate_number[1:4].replace('Б', '5') + plate_number[4:6] + plate_number[6:]
+                #3массив
+                for i in range(4, 6):
+                    if '0' in plate_number[4:6]:
+                        plate_number = plate_number[:1] + plate_number[1:4] + plate_number[4:6].replace('0', 'О') + plate_number[6:]
+                    elif '1' in plate_number[4:6]:
+                        plate_number = plate_number[:1] + plate_number[1:4] + plate_number[4:6].replace('1', 'T') + plate_number[6:]
+                output_array = [plate_number[0], plate_number[1:4], plate_number[4:6], plate_number[6:]]
+                output_array = ''.join(output_array)
+                print(text)
+                print(output_array)
 
-    bot.send_message(message.chat.id, f"Номерной знак:  {plate_number}")
+                bot.delete_message(message.chat.id, processing_message.message_id)
+                bot.send_message(message.chat.id, f"Номерной знак:  {output_array}")
 
-    with open('redimages/plate_roi.jpeg', 'rb') as photo:
-        bot.send_photo(message.chat.id, photo)
+            with open('redimages/plate_roi.jpeg', 'rb') as photo:
+                bot.send_photo(message.chat.id, photo)
+
+    # Удаление временных файлов
+    if os.path.exists('downloadimages/image.jpg'):
+        os.remove('downloadimages/image.jpg')
+    if os.path.exists('redimages/plate_roi.jpeg'):
+        os.remove('redimages/plate_roi.jpeg')
 
 bot.polling()
