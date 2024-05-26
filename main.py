@@ -74,6 +74,9 @@ def handle_image(message):
                         plate_number = plate_number[:1] + plate_number[1:4] + plate_number[4:6].replace('0', 'О') + plate_number[6:]
                     elif '1' in plate_number[4:6]:
                         plate_number = plate_number[:1] + plate_number[1:4] + plate_number[4:6].replace('1', 'T') + plate_number[6:]
+                for i in range(6, 10):
+                    if 'Б' in plate_number[6:]:
+                        plate_number = plate_number[:1] + plate_number[1:4] + plate_number[4:6] + plate_number[6:].replace('Б', '5')
                 output_array = [plate_number[0], plate_number[1:4], plate_number[4:6], plate_number[6:]]
                 output_array = ''.join(output_array)
                 print(text)
