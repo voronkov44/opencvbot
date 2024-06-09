@@ -51,7 +51,7 @@ pip install telebot
 
 Как создать телеграм бота можете найти [тут.](https://www.google.com/search?q=%D0%BA%D0%B0%D0%BA+%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C+%D1%82%D0%B5%D0%BB%D0%B5%D0%B3%D1%80%D0%B0%D0%BC+%D0%B1%D0%BE%D1%82%D0%B0&oq=%D0%BA%D0%B0%D0%BA+%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C+%D1%82%D0%B5%D0%BB%D0%B5%D0%B3%D1%80%D0%B0%D0%BC+%D0%B1%D0%BE%D1%82%D0%B0&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyDAgBEAAYFBiHAhiABDIMCAIQABgUGIcCGIAEMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMgcIBhAAGIAEMgcIBxAAGIAEMgcICBAAGIAEMgcICRAAGIAEqAIAsAIA&sourceid=chrome&ie=UTF-8#ip=1)
 
-**4.** После создания телеграм бота, необходимо заменить bottoken в коде на токен вашего бота.
+**4.** После создания телеграм бота, необходимо заменить "bottoken" в коде, на токен вашего бота.
 
 **5.** После проделанных шагов можете использовать телеграм бота
 
@@ -60,10 +60,6 @@ pip install telebot
 
 ![image](https://github.com/voronkov44/opencvbot/assets/123954369/5677d6ca-4cf2-48ab-af65-58c6c5bf45fd)
 
-
-## **Зависимости**
-
-Установка IDE [PyCharm.](https://www.jetbrains.com/pycharm/)
 
 ## **Библиотеки**
 
@@ -76,6 +72,9 @@ EasyOCR это пакет для Python, который предоставляе
 [Telebot:](https://habr.com/ru/articles/580408/)
 Библиотека Telebot для телеграм ботов на Python предоставляет ряд основных функций: TeleBot(token) – конструктор класса, который принимает токен вашего бота. send_message(chat_id, text) – отправляет сообщение пользователю с указанным chatid .
   
+## **Зависимости**
+
+Установка IDE [PyCharm.](https://www.jetbrains.com/pycharm/)
 
 
 
