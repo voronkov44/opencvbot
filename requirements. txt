@@ -1,4 +1,4 @@
-pip install opencv-python
-python.exe -m pip install --upgrade pip -установка последней версии opencv
-pip install easyocr - установка библиотеки easyocr которая помогает выводить текст с фотографии
-pip install telebot
+pip install opencv-python - установка библиотеки opencv (библиотека алгоритмов компьютерного зрения, обработки изображений)
+python.exe -m pip install --upgrade pip - установка последней версии opencv
+pip install easyocr - установка библиотеки easyocr (пакет для Python, который предоставляет готовый к использованию механизм OCR)
+pip install telebot - установка библиотеки telebot (библиотека Telebot нужна для телеграм ботов на Python)
