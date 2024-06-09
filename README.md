@@ -65,6 +65,16 @@ pip install telebot
 
 Установка IDE [PyCharm.](https://www.jetbrains.com/pycharm/)
 
+## **Библиотеки**
+
+[Opencv:](https://habr.com/ru/articles/519454/)
+OpenCV (англ. open source computer vision library) — библиотека алгоритмов компьютерного зрения, обработки изображений и численных алгоритмов общего назначения с открытым кодом. Реализована на Си/C++, также разрабатывается для Python, Java, Ruby, Matlab, Lua и других языков.
+
+[EasyOCR:](https://habr.com/ru/articles/573030/)
+EasyOCR это пакет для Python, который предоставляет готовый к использованию механизм OCR и поддерживает 80+ языков. EasyOCR легко устанавливается и очень прост в использовании.
+
+[Telebot:](https://habr.com/ru/articles/580408/)
+Библиотека Telebot для телеграм ботов на Python предоставляет ряд основных функций: TeleBot(token) – конструктор класса, который принимает токен вашего бота. send_message(chat_id, text) – отправляет сообщение пользователю с указанным chatid .
   
 
 
