@@ -20,7 +20,7 @@ cd opencvbot
 **1.** Открываем проект в любом удобном IDE, я буду открывать проект в PyCharm от компании JetBrains.
 ![image](https://github.com/voronkov44/opencvbot/assets/123954369/a8f50386-8e12-4912-b577-c3e1829fcb91)
 
-Для установки IDE PyCharm смотрите [зависимости]() 
+Для установки IDE PyCharm смотрите [зависимости](https://github.com/voronkov44/opencvbot/tree/readme_branch?tab=readme-ov-file#%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8) 
 
 **2.** После открытия проекта нам необходимо скачать нужные нам библиотеки через терминал в самом IDE.
  
@@ -48,6 +48,7 @@ pip install telebot
 
 
 **3.** После установки библиотек нам необходимо создать телеграм бота.
+
 Как создать телеграм бота можете найти [тут.](https://www.google.com/search?q=%D0%BA%D0%B0%D0%BA+%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C+%D1%82%D0%B5%D0%BB%D0%B5%D0%B3%D1%80%D0%B0%D0%BC+%D0%B1%D0%BE%D1%82%D0%B0&oq=%D0%BA%D0%B0%D0%BA+%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C+%D1%82%D0%B5%D0%BB%D0%B5%D0%B3%D1%80%D0%B0%D0%BC+%D0%B1%D0%BE%D1%82%D0%B0&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyDAgBEAAYFBiHAhiABDIMCAIQABgUGIcCGIAEMgcIAxAAGIAEMgcIBBAAGIAEMgcIBRAAGIAEMgcIBhAAGIAEMgcIBxAAGIAEMgcICBAAGIAEMgcICRAAGIAEqAIAsAIA&sourceid=chrome&ie=UTF-8#ip=1)
 
 **4.** После создания телеграм бота, нам нужно заменить bottoken в коде на токен вашего бота.
