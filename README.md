@@ -56,6 +56,8 @@ pip install telebot
 **5.** После проделанных шагов можете использовать телеграм бота
 
 Пример работы телеграм бота:
+
+
 ![image](https://github.com/voronkov44/opencvbot/assets/123954369/5677d6ca-4cf2-48ab-af65-58c6c5bf45fd)
 
 
