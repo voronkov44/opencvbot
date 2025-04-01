@@ -18,7 +18,7 @@ cd opencvbot
 Для сборки и запуска проекта необходимо выполнить следующие шаги:
 
 **1.** Открываем проект в любом удобном IDE, я буду открывать проект в PyCharm от компании JetBrains.
-![image](https://github.com/voronkov44/opencvbot/assets/123954369/a8f50386-8e12-4912-b577-c3e1829fcb91)
+
 
 Для установки IDE PyCharm смотрите [зависимости.](https://github.com/voronkov44/opencvbot/tree/readme_branch?tab=readme-ov-file#%D0%B7%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D0%B8) 
 
